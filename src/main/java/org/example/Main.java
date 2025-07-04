@@ -3,15 +3,31 @@ package org.example;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    public static int fib(int n) {
+        if (n < 2) return n;
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
+        return dp[n];
+    }
+
+    public static int fib1(int n) {
+        if (n < 2) return n;
+        int pre0 = 0, pre1 = 1;
+        for (int i = 2; i <= n; i++) {
+            pre1 = pre0 + pre1;
+            pre0 = pre1 - pre0;
+
+        }
+        return pre1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(fib(30));
+        System.out.println(fib1(30));
     }
 }

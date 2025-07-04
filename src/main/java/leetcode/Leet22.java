@@ -31,7 +31,7 @@ public class Leet22 {
     }
 
     public static void main(String[] args) {
-
+        generateParenthesis(3);
     }
 
 

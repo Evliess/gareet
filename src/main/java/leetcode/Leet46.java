@@ -23,4 +23,8 @@ public class Leet46 {
             path.remove(path.size()-1);
         }
     }
+
+    public static void main(String[] args) {
+        permute(new int[]{1,2,3});
+    }
 }
