@@ -10,11 +10,11 @@ public class Leet322 {
         Arrays.fill(dp, Integer.MAX_VALUE);
         //设置初始值
         dp[0] = 0;
-        for (int i = 1; i < amount + 1; i++) {
+        for (int currAmount = 1; currAmount < amount + 1; currAmount++) {
             for (int coin : coins) {
                 //硬币面额小于当前金额，并且dp[i-coin]有有效的值
-                if (coin <= i && dp[i - coin] != Integer.MAX_VALUE) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                if (coin <= currAmount && dp[currAmount - coin] != Integer.MAX_VALUE) {
+                    dp[currAmount] = Math.min(dp[currAmount], dp[currAmount - coin] + 1);
                 }
 
             }
