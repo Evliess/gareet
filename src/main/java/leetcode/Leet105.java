@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.*;
 
-public class Leet102 {
+public class Leet105 {
 
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
         List<Integer> pre = new ArrayList<>();
