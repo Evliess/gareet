@@ -28,10 +28,17 @@ public class Main {
         return pre1;
     }
 
+    public static int fib2(int n, int[] memo) {
+        if (n < 2) return n;
+        memo[0] = 0;
+        memo[1] = 1;
+        if (memo[n] > 0) return memo[n];
+        memo[n] = fib2(n - 1, memo) + fib2(n - 2, memo);
+        return memo[n];
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(fib(30));
-        System.out.println(fib1(30));
-        Stack<Integer> stack = new Stack<>();
-        stack.pop();
+        System.out.println(fib2(30, new int[31]));
     }
 }

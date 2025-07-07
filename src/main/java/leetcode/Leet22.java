@@ -3,6 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+//22. 括号生成
 public class Leet22 {
 
     public static List<String> generateParenthesis(int n) {

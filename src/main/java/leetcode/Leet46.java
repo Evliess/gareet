@@ -3,6 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+//46. 全排列
 public class Leet46 {
 
     public static List<List<Integer>> permute(int[] nums) {
