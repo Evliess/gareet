@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 public class Leet238 {
 
 
@@ -17,9 +15,6 @@ public class Leet238 {
         for (int j = nums.length - 2; j >= 0; j--) {
             right[j] = right[j + 1] * nums[j + 1];
         }
-        for ( int r: right) {
-            System.out.println(r);
-        }
 
         for (int k = 0; k < nums.length; k++) {
             answer[k] = left[k] * right[k];
@@ -29,6 +24,7 @@ public class Leet238 {
     }
 
     public static void main(String[] args) {
-        productExceptSelf(new int[]{1, 2, 3, 4,});
+        int[] ans = productExceptSelf(new int[]{1, 2, 3, 4,});
+
     }
 }
