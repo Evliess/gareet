@@ -6,76 +6,80 @@ import java.util.Map;
 class CNode {
     CNode prev;
     CNode next;
-    CNode tail;
     int key;
     int val;
-    int capacity;
 
     CNode(int key, int val) {
         this.key = key;
         this.val = val;
     }
+
+    CNode() {
+    }
 }
 
 class LRUCache {
     CNode head;
+    CNode tail;
     Map<Integer, CNode> hash;
     int capacity;
+    int size;
 
     public LRUCache(int capacity) {
         this.hash = new HashMap<>(capacity);
         this.capacity = capacity;
+        head = new CNode();
+        tail = new CNode();
+        head.next = tail;
+        tail.prev = head;
     }
 
     public int get(int key) {
         CNode node = hash.get(key);
         if (node == null) return -1;
+        moveToHead(node);
+        return node.val;
+    }
 
-        if (node.prev == null) return node.val; //if this node is head, return val and do nothing
-        if (node.next == null) { // if this node is tail, set new tail.next is null and update head.tail
-            node.prev.next = null;
-            head.tail = node.prev;
-        }
+    private void moveToHead(CNode node) {
+        delNode(node);
         appendHead(node);
-        return head.val;
     }
 
-    private int delTail() {
-        CNode tail = head.tail;
-        head.tail = tail.prev;
-        return tail.val;
+    private void delNode(CNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
+
+    private CNode delTail() {
+        CNode res = tail.prev;
+        delNode(res);
+        return res;
+    }
+
 
     private void appendHead(CNode node) {
-        if (head == null) {
-            head = node;
-            head.tail = node;
-        } else {
-            node.capacity = head.capacity;
-            node.next = head;
-            node.tail = head.tail;
-            head.tail = null;
-            node.prev = null;
-            head.prev = node;
-            head = node;
-        }
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
     }
 
     public void put(int key, int value) {
         CNode target = hash.get(key);
         if (target != null) {
             target.val = value;
-            get(key);
+            moveToHead(target);
         } else {
             CNode node = new CNode(key, value);
-            if (head != null && this.capacity == head.capacity) {
-                int tailVal = delTail();
-                head.capacity--;
+            if (size == this.capacity) {
+                int tailVal = delTail().val;
+                size--;
                 hash.remove(tailVal);
             }
-            appendHead(node);
-            head.capacity++;
             hash.put(key, node);
+            appendHead(node);
+            size++;
         }
     }
 }
@@ -85,6 +89,7 @@ public class Leet146 {
     public static void main(String[] args) {
         LRUCache cache = new LRUCache(2);
         cache.put(1, 1);
+        System.out.println(cache.get(1));
         cache.put(2, 2);
         System.out.println(cache.get(1));
         cache.put(3, 3);
