@@ -1,5 +1,7 @@
 package org.example;
 
+
+// 务必学习Leet146的实现
 public class DeLink {
 
     DeLink prev;
