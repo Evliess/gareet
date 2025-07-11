@@ -16,7 +16,6 @@ public class Leet322 {
                 if (coin <= i && dp[i - coin] != Integer.MAX_VALUE) {
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
-
             }
         }
         if (dp[amount] == Integer.MAX_VALUE) return -1;

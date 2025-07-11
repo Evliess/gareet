@@ -71,12 +71,12 @@ class LRUCache {
             target.val = value;
             moveToHead(target);
         } else {
-            CNode node = new CNode(key, value);
             if (size == this.capacity) {
                 int tailVal = delTail().val;
                 size--;
                 hash.remove(tailVal);
             }
+            CNode node = new CNode(key, value);
             hash.put(key, node);
             appendHead(node);
             size++;

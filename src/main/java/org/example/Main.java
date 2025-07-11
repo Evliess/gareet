@@ -40,5 +40,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String id = "oI8Jj7Ok25G78_aM8OXFuqIAeNV8";
+        System.out.println(id.length());
     }
 }
