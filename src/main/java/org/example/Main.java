@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Stack;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -42,5 +40,7 @@ public class Main {
 
         String id = "oI8Jj7Ok25G78_aM8OXFuqIAeNV8";
         System.out.println(id.length());
+        int i = 19;
+        System.out.println(i / 2);
     }
 }

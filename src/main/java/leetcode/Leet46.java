@@ -7,7 +7,7 @@ import java.util.List;
 public class Leet46 {
 
     public static List<List<Integer>> permute(int[] nums) {
-        List<List <Integer>> answers = new ArrayList<>();
+        List<List<Integer>> answers = new ArrayList<>();
         beBack(nums, new ArrayList<>(), answers);
         return answers;
     }
@@ -17,15 +17,15 @@ public class Leet46 {
             answers.add(new ArrayList<>(path));
             return;
         }
-        for ( int num: nums) {
-            if(path.contains(num)) continue;
+        for (int num : nums) {
+            if (path.contains(num)) continue;
             path.add(num);
             beBack(nums, path, answers);
-            path.remove(path.size()-1);
+            path.remove(path.size() - 1);
         }
     }
 
     public static void main(String[] args) {
-        permute(new int[]{1,2,3});
+        permute(new int[]{1, 2, 3});
     }
 }
