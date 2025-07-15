@@ -40,7 +40,9 @@ public class Main {
 
         String id = "oI8Jj7Ok25G78_aM8OXFuqIAeNV8";
         System.out.println(id.length());
-        int i = 19;
+        int i = 1;
         System.out.println(i / 2);
+
+
     }
 }
