@@ -45,21 +45,15 @@ public class Leet297 {
                 nodes.put(i, nodes.computeIfAbsent(i, v -> new TreeNode(Integer.parseInt(val))));
             }
             TreeNode node = nodes.get(i);
-            if (2 * i + 1 < data.length) {
-                String leftVal = data[2 * i + 1];
-                if (!leftVal.equals("null")) {
-                    TreeNode left = new TreeNode(Integer.parseInt(leftVal));
-                    node.left = left;
-                    nodes.put(2 * i + 1, left);
-                }
+            if (2 * i + 1 < data.length && !data[2 * i + 1].equals("null")) {
+                TreeNode left = new TreeNode(Integer.parseInt(data[2 * i + 1]));
+                node.left = left;
+                nodes.put(2 * i + 1, left);
             }
-            if (2 * i + 2 < data.length) {
-                String rightVal = data[2 * i + 2];
-                if (!rightVal.equals("null")) {
-                    TreeNode right = new TreeNode(Integer.parseInt(rightVal));
-                    node.right = right;
-                    nodes.put(2 * i + 2, right);
-                }
+            if (2 * i + 2 < data.length && !data[2 * i + 2].equals("null")) {
+                TreeNode right = new TreeNode(Integer.parseInt(data[2 * i + 2]));
+                node.right = right;
+                nodes.put(2 * i + 2, right);
             }
         }
         return root;
