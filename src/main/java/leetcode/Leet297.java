@@ -1,21 +1,20 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Leet297 {
 
     public static void main(String[] args) {
         Leet297 l = new Leet297();
-        TreeNode tree = l.dfsBuild();
-        l.print(tree);
+        TreeNode tree = l.build();
+//        l.print(tree);
         String vals = l.serialize(tree);
-//        System.out.println(vals);
+        System.out.println(vals);
 
         tree = l.deserialize(vals);
         System.out.println("----");
-        l.print(tree);
+        vals = l.serialize(tree);
+        System.out.println(vals);
     }
 
     // Encodes a tree to a single string.
@@ -29,7 +28,41 @@ public class Leet297 {
     public TreeNode deserialize(String data) {
         Queue<String> queue = new LinkedList<>(Arrays.asList(data.split(",")));
 //        return dfsBuild(queue);
-        return bfsBuild(queue);
+//        return bfsBuild(queue);
+        return arrBuild(data.split(","));
+    }
+
+    //https://www.bilibili.com/video/BV15NKgzHEdL?spm_id_from=333.788.videopod.episodes&vd_source=80f7f5c121c0bca7cef6496807c5764e&p=32
+    public TreeNode arrBuild(String[] data) {
+        Map<Integer, TreeNode> nodes = new HashMap<>();
+        if (data.length == 0 || data[0].equals("null")) return null;
+        String rootVal = data[0];
+        TreeNode root = new TreeNode(Integer.parseInt(rootVal));
+        nodes.put(0, root);
+        for (int i = 0; i < data.length; i++) {
+            String val = data[i];
+            if (!val.equals("null")) {
+                nodes.put(i, nodes.computeIfAbsent(i, v -> new TreeNode(Integer.parseInt(val))));
+            }
+            TreeNode node = nodes.get(i);
+            if (2 * i + 1 < data.length) {
+                String leftVal = data[2 * i + 1];
+                if (!leftVal.equals("null")) {
+                    TreeNode left = new TreeNode(Integer.parseInt(leftVal));
+                    node.left = left;
+                    nodes.put(2 * i + 1, left);
+                }
+            }
+            if (2 * i + 2 < data.length) {
+                String rightVal = data[2 * i + 2];
+                if (!rightVal.equals("null")) {
+                    TreeNode right = new TreeNode(Integer.parseInt(rightVal));
+                    node.right = right;
+                    nodes.put(2 * i + 2, right);
+                }
+            }
+        }
+        return root;
     }
 
     public TreeNode bfsBuild(Queue<String> data) {
@@ -106,7 +139,7 @@ public class Leet297 {
 
     }
 
-    public TreeNode dfsBuild() {
+    public TreeNode build() {
         TreeNode root = new TreeNode(0);
         root.left = new TreeNode(1);
         root.right = new TreeNode(2);
