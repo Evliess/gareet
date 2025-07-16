@@ -5,7 +5,7 @@ public class QuickSort {
     public static void sort(int[] nums, int start, int end) {
         if (start >= end || nums.length < 2) return;
         int pos = getPos(nums, start, end);
-        sort(nums, 0, pos);
+        sort(nums, start, pos);
         sort(nums, pos + 1, end);
     }
 
