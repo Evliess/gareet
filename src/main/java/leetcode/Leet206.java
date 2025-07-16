@@ -9,10 +9,10 @@ public class Leet206 {
         ListNode prev = null;
         ListNode curr = head;
         while (curr != null) {
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            ListNode next = curr.next; // 保存下一个节点
+            curr.next = prev; //反转指针方向
+            prev = curr; // prev指针前移
+            curr = next; // curr指针前移
         }
         return prev;
     }

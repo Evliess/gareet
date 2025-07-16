@@ -3,6 +3,25 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
+//LinkedHashMap
+//import java.util.LinkedHashMap;
+//import java.util.Map;
+//
+//public class LRUCache<K, V> extends LinkedHashMap<K, V> {
+//    private final int maxSize;
+//
+//    public LRUCache(int maxSize) {
+//        // 初始容量，负载因子，accessOrder=true表示按访问顺序排序
+//        super(maxSize, 0.75f, true);
+//        this.maxSize = maxSize;
+//    }
+//
+//    @Override
+//    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+//        return size() > maxSize;
+//    }
+//}
+
 class CNode {
     CNode prev;
     CNode next;
