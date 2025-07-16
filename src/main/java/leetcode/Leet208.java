@@ -33,11 +33,11 @@ class Trie {
 
 
     public boolean search(String word) {
-        TrieNode node = travese(word);
+        TrieNode node = traverse(word);
         return node != null && node.isEnd;
     }
 
-    public TrieNode travese(String word) {
+    public TrieNode traverse(String word) {
         TrieNode node = root;
         for (char w : word.toCharArray()) {
             int index = w - 'a';
@@ -50,7 +50,7 @@ class Trie {
     }
 
     public boolean startsWith(String prefix) {
-        return travese(prefix) != null;
+        return traverse(prefix) != null;
     }
 }
 
