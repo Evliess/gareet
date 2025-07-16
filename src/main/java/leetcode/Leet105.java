@@ -1,14 +1,17 @@
 package leetcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Leet105 {
 
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
-        List<Integer> pre = new ArrayList<>();
+        Queue<Integer> pre = new LinkedList<>();
         List<Integer> in = new ArrayList<>();
         for (int p : preorder) {
-            pre.add(p);
+            pre.offer(p);
         }
         for (int i : inorder) {
             in.add(i);
@@ -16,9 +19,9 @@ public class Leet105 {
         return buildTree(pre, in);
     }
 
-    public static TreeNode buildTree(List<Integer> preorder, List<Integer> inorder) {
+    public static TreeNode buildTree(Queue<Integer> preorder, List<Integer> inorder) {
         if (!inorder.isEmpty()) {
-            int valInPreOrder = preorder.removeFirst();
+            int valInPreOrder = preorder.poll();
             TreeNode root = new TreeNode(valInPreOrder);
             int posOfInOrder = inorder.indexOf(valInPreOrder);
             root.left = buildTree(preorder, inorder.subList(0, posOfInOrder));
@@ -27,7 +30,6 @@ public class Leet105 {
 
         }
         return null;
-
     }
 
     public static TreeNode build() {
@@ -86,7 +88,5 @@ public class Leet105 {
         int[] pre = new int[]{3, 9, 20, 15, 7};
         int[] in = new int[]{9, 3, 15, 20, 7};
         buildTree(pre, in);
-
-
     }
 }
