@@ -29,7 +29,6 @@ public class Knapsack {
         }
 
 
-
         return dp[weights.length][k];
     }
 
