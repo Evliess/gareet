@@ -15,6 +15,21 @@ public class Knapsack {
                 }
             }
         }
+
+        int i = 4;
+        int n = 8;
+        while (i > 0 && n > 0) {
+            if (dp[i][n] == dp[i - 1][n]) {
+                i--;
+            } else {
+                System.out.println(i + " 包含");
+                i--;
+                n = n - weights[i];
+            }
+        }
+
+
+
         return dp[weights.length][k];
     }
 
