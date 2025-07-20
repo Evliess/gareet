@@ -19,6 +19,7 @@ public class Leet121 {
         return ans;
     }
 
+    //遍历的过程中记住最低价格
     public int solution2(int[] prices) {
         int ans = 0;
         int minPrice = prices[0];
