@@ -13,7 +13,6 @@ public class Leet22 {
     }
 
     public static void backTrack(int n, List<String> ans, String cur, int left, int right) {
-        System.out.println("status:> curr: " + cur + " left: " + left + " right: " + right + " ans: " + ans.size());
         if (cur.length() == 2 * n) {
             ans.add(cur);
             return;
