@@ -18,7 +18,7 @@ public class Leet394 {
                     else break;
                 }
                 int num = stack.pop() - '0';
-                tmp = nString(num, tmp);
+                tmp = repeat(num, tmp);
                 tmp = new StringBuilder(tmp).reverse().toString();
                 addToStack(stack, tmp);
 
@@ -41,7 +41,7 @@ public class Leet394 {
         }
     }
 
-    public static String nString(int n, String str) {
+    public static String repeat(int n, String str) {
         StringBuilder sb = new StringBuilder();
         while (n-- > 0) sb.append(str);
         return sb.toString();
