@@ -5,6 +5,20 @@ import java.util.Queue;
 
 public class Leet114 {
 
+    TreeNode prev;
+
+    public void solution(TreeNode root) {
+        if (root == null) return;
+        TreeNode right = root.right;
+        if (prev != null) {
+            prev.left = null;
+            prev.right = root;
+        }
+        prev = root;
+        solution(root.left);
+        solution(right);
+    }
+
     public void flatten(TreeNode root) {
         if (root == null) return;
         Queue<TreeNode> queue = new LinkedList<>();
