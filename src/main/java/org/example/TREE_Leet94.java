@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Stack;
 
 //94. 二叉树的中序遍历
-public class Leet94 {
+public class TREE_Leet94 {
 
     public static void main(String[] args) {
-        Leet94 l = new Leet94();
+        TREE_Leet94 l = new TREE_Leet94();
         TreeNode tree = l.build();
         List<Integer> ans = l.inorderTraversal(tree);
         System.out.println("ans: " + ans);
