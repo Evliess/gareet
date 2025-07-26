@@ -15,8 +15,8 @@ public class Leet152 {
     }
 
     public static int maxProduct0(int[] nums) {
-        int max = nums[0];
         int curr = nums[0];
+        int max = curr;
         for (int i = 1; i < nums.length; i++) {
             curr = Math.max(nums[i], curr * nums[i]);
             max = Math.max(max, curr);
