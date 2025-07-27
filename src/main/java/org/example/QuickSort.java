@@ -5,7 +5,7 @@ public class QuickSort {
     public static void sort(int[] nums, int start, int end) {
         if (start >= end || nums.length < 2) return;
         int pos = getPos(nums, start, end);
-        sort(nums, start, pos);
+        sort(nums, start, pos - 1);
         sort(nums, pos + 1, end);
     }
 
@@ -24,7 +24,7 @@ public class QuickSort {
             }
         }
         swap(nums, left, end);
-        return left;
+        return end;
     }
 
     public static void swap(int[] nums, int i, int j) {
@@ -51,8 +51,8 @@ public class QuickSort {
         int[] a = new int[]{5, 22, 22, 11, 4, 3, 2, 1, 1};
         sort(a, 0, a.length - 1);
         System.out.println(a);
-        insertSort(a);
-        System.out.println(a);
+//        insertSort(a);
+//        System.out.println(a);
 
 
     }
