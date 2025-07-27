@@ -5,8 +5,7 @@ import java.util.Arrays;
 public class TwoPointers_Leet581 {
     public static int findUnsortedSubarray(int[] nums) {
         if (nums == null || nums.length == 1) return 0;
-        int[] sorted = new int[nums.length];
-        System.arraycopy(nums, 0, sorted, 0, nums.length);
+        int[] sorted = Arrays.copyOfRange(nums, 0, nums.length);
         Arrays.sort(sorted);
         int left = 0;
         int right = nums.length - 1;
@@ -44,7 +43,8 @@ public class TwoPointers_Leet581 {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4};
+        int[] nums = new int[]{1, 3, 2, 4};
         System.out.println(findUnsortedSubarray(nums));
+        System.out.println(solution(nums));
     }
 }
