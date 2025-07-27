@@ -23,21 +23,19 @@ public class MergeSort {
         int pa = 0, pb = 0, pt = 0;
         while (pa < a.length && pb < b.length) {
             if (a[pa] < b[pb]) {
-                target[pt] = a[pa++];
+                target[pt++] = a[pa++];
             } else {
-                target[pt] = b[pb++];
+                target[pt++] = b[pb++];
             }
-            pt++;
         }
         //数组a还有剩余元素
         while (pa < a.length) target[pt++] = a[pa++];
         //数组b还有剩余元素
         while (pb < b.length) target[pt++] = b[pb++];
-
     }
 
     public static void main(String[] args) {
-        int[] c = new int[]{1,5,3};
+        int[] c = new int[]{11, 2, 3, 4};
         sort(c);
         System.out.println(c);
 
