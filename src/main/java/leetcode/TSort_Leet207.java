@@ -9,6 +9,7 @@ public class TSort_Leet207 {
     //[1,0] 表示 1 依赖 0, 1 有一个入度
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
         if (numCourses < 0) return false;
+        if (prerequisites == null || prerequisites.length == 0) return true;
         List<Integer> ans = new ArrayList<>();
         Queue<Integer> degree = new LinkedList<>();
 
