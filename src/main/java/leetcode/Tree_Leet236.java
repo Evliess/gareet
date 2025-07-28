@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Leet236 {
+public class Tree_Leet236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return null;
         if (root == p || root == q) {

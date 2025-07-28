@@ -23,7 +23,7 @@ public class Leet148 {
             curr.next = node;
             curr = node;
             if (queue.isEmpty()) {
-                curr.next = null;
+                curr.next = null; //将最后一个node的指向设置为null
             }
         }
         return ans;

@@ -11,14 +11,14 @@ public class DP_Leet221 {
             if (matrix[i][0] == '1') {
                 dp[i][0] = 1;
                 //此处容易忘记更新maxSide
-                maxSide = Math.max(maxSide, dp[i][0]);
+                maxSide = 1;
             }
         }
         for (int j = 0; j < col; j++) {
             if (matrix[0][j] == '1') {
                 dp[0][j] = 1;
                 //此处容易忘记更新maxSide
-                maxSide = Math.max(maxSide, dp[0][j]);
+                maxSide = 1;
             }
         }
         for (int i = 1; i < row; i++) {

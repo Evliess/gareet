@@ -2,7 +2,7 @@ package org.example;
 
 import leetcode.TreeNode;
 
-public class Leet226 {
+public class Tree_Leet226 {
 
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
