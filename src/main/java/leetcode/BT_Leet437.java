@@ -9,17 +9,17 @@ public class BT_Leet437 {
         if (root == null) return 0;
         Map<Long, Integer> prefixSum = new HashMap<>();
         prefixSum.put(0L, 1);
-        return backtrack(root, prefixSum, 0, targetSum);
+        return backtrack(root, targetSum, 0, prefixSum);
     }
 
-    public int backtrack(TreeNode root, Map<Long, Integer> prefixSum, long currentSum, int target) {
+    public int backtrack(TreeNode root, int targetSum, long currentSum, Map<Long, Integer> prefixSum) {
         if (root == null) return 0;
         long val = root.val;
         currentSum += val;
-        int ans = prefixSum.getOrDefault(currentSum - target, 0);
+        int ans = prefixSum.getOrDefault(currentSum - targetSum, 0);
         prefixSum.put(currentSum, prefixSum.getOrDefault(currentSum, 0) + 1);
-        ans += backtrack(root.left, prefixSum, currentSum, target);
-        ans += backtrack(root.right, prefixSum, currentSum, target);
+        ans += backtrack(root.left, targetSum, currentSum, prefixSum);
+        ans += backtrack(root.right, targetSum, currentSum, prefixSum);
         prefixSum.put(currentSum, prefixSum.get(currentSum) - 1);
         return ans;
     }

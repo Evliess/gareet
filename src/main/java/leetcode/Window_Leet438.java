@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Leet438 {
+public class Window_Leet438 {
 
-    public List<Integer> solution(String s, String p) {
+    public static List<Integer> solution(String s, String p) {
         List<Integer> ans = new ArrayList<>();
         int[] cntS = new int[26];
         int[] cntP = new int[26];
@@ -44,9 +44,9 @@ public class Leet438 {
     }
 
     public static void main(String[] args) {
-        String s = "cbaebabacd";
+        String s = "addabc";
         String p = "abc";
-        List<Integer> ans = findAnagrams(s, p);
+        List<Integer> ans = solution(s, p);
         System.out.println(ans);
     }
 }
