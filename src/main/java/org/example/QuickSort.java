@@ -5,6 +5,7 @@ public class QuickSort {
     public static void sort(int[] nums, int start, int end) {
         if (start >= end || nums.length < 2) return;
         int pos = getPos(nums, start, end);
+        System.out.println("pos:" + pos);
         sort(nums, start, pos - 1);
         sort(nums, pos + 1, end);
     }
@@ -13,10 +14,12 @@ public class QuickSort {
         int pivot = nums[start];
         int left = start;
         while (start < end) {
+            //从右边找比pivot小
             while (start < end && nums[end] >= pivot) {
                 end--;
             }
-            while (start < end && nums[start] < pivot) {
+            //从左边找比pivot大
+            while (start < end && nums[start] <= pivot) {
                 start++;
             }
             if (start < end) {
