@@ -17,7 +17,12 @@ public class Leet394 {
                     if (top != '[') tmp = tmp + top;
                     else break;
                 }
-                int num = stack.pop() - '0';
+                StringBuilder numStr = new StringBuilder();
+                while (!stack.isEmpty() && Character.isDigit(stack.peek())) {
+                    Character digit = stack.pop();
+                    numStr.append(digit - '0');
+                }
+                int num = Integer.parseInt(numStr.reverse().toString());
                 tmp = repeat(num, tmp);
                 tmp = new StringBuilder(tmp).reverse().toString();
                 addToStack(stack, tmp);
@@ -56,5 +61,9 @@ public class Leet394 {
         System.out.println(decodeString(a).equals("accaccacc"));
         a = "3[a]2[bc]";
         System.out.println(decodeString(a).equals("aaabcbc"));
+        a = "3[a]10[bc]a";
+        System.out.println(decodeString(a).equals("aaabcbcbcbcbcbcbcbcbcbca"));
+
+        StringBuilder sb = new StringBuilder("ab");
     }
 }
