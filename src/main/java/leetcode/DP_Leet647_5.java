@@ -24,7 +24,7 @@ public class DP_Leet647_5 {
         return count;
     }
 
-
+    //dp[i][j] 表示从s[i,j]是一个回文字符串
     public int countSubstrings(String s) {
         if (s == null || s.isEmpty()) return 0;
         int length = s.length();
@@ -56,6 +56,6 @@ public class DP_Leet647_5 {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution("aaa"));
+        System.out.println(solution("abc"));
     }
 }
