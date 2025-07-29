@@ -5,13 +5,23 @@ public class Knapsack {
 
     public static int solution(int k, int[] weights, int[] vals) {
         int[][] dp = new int[weights.length + 1][k + 1];
+        //初始化
+
+        //没有物品时候，价值为0
+        for (int i = 0; i < k + 1; i++) {
+            dp[0][i] = 0;
+        }
+        //背包容量为0时，价值为0
+        for (int j = 0; j < weights.length + 1; j++) {
+            dp[j][0] = 0;
+        }
+
         for (int i = 1; i <= weights.length; i++) {
             for (int j = 1; j <= k; j++) {
-                if (j >= weights[i - 1]) {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weights[i - 1]] + vals[i - 1]);
-                } else {
-                    //当前物品的重量超过背包的剩余容量
+                if (j < weights[i - 1]) {
                     dp[i][j] = dp[i - 1][j];
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weights[i - 1]] + vals[i - 1]);
                 }
             }
         }
