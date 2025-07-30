@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //46. 全排列
-public class Leet46 {
+public class BT_Leet46 {
 
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> answers = new ArrayList<>();

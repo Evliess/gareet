@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //39. 组合总和
-public class Leet39 {
+public class BT_Leet39 {
 
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
@@ -22,14 +22,15 @@ public class Leet39 {
         for (int i = pos; i < candidates.length; i++) {
             if (candidates[i] > target) break;
             path.add(candidates[i]);
-            backTrack(candidates, target - candidates[i], i, path, answer);
+            backTrack(candidates, target - candidates[i], pos++, path, answer);
             path.remove(path.size() - 1);
         }
 
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> ans = combinationSum(new int[]{2,3,6,7}, 7);
+        List<List<Integer>> ans = combinationSum(new int[]{2, 3, 5}, 8);
+        System.out.println(ans);
     }
 
 
