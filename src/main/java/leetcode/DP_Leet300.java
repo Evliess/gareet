@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 //300. 最长递增子序列
-public class Leet300 {
+public class DP_Leet300 {
 
     public int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];
