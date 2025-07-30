@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Leet279 {
+public class DP_Leet279 {
     public static int numSquares(int n) {
         int[] dp = new int[n + 1];
         for (int i = 1; i <= n; i++) {
