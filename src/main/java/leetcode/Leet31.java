@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 public class Leet31 {
 
     public static void nextPermutation(int[] nums) {
@@ -41,8 +43,9 @@ public class Leet31 {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 1};
-        reverse(nums, 0, nums.length - 1);
+        int[] nums = new int[]{3, 2, 1, 4, 6, 5};
+        nextPermutation(nums);
+        System.out.println(Arrays.toString(nums));
     }
 
 }
