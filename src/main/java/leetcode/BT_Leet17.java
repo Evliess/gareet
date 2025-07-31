@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BT_Leet17 {
 
-    public List<String> letterCombinations(String digits) {
+    public static List<String> letterCombinations(String digits) {
         List<String> ans = new ArrayList<>();
         if (digits == null || digits.isEmpty())
             return ans;
@@ -30,7 +30,7 @@ public class BT_Leet17 {
      * @param index  按键的index
      * @param ans
      */
-    public void backtrack(String digits, String[] keys, String curr, int index, List<String> ans) {
+    public static void backtrack(String digits, String[] keys, String curr, int index, List<String> ans) {
         if (curr.length() == digits.length()) {
             ans.add(curr);
             return;
