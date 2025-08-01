@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //78. 子集
-public class Leet78 {
+public class BT_Leet78 {
 
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();

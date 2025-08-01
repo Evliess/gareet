@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-public class TREE_Leet98 {
+public class TREE_BST_Leet98 {
 
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
@@ -27,7 +27,7 @@ public class TREE_Leet98 {
     }
 
     public boolean helper(TreeNode node, long low, long high) {
-        if (node == null) return false;
+        if (node == null) return true;  //null是合法的二叉搜索树
         if (node.val <= low || node.val >= high) return false;
         return helper(node.left, low, node.val) && helper(node.right, node.val, high);
     }
