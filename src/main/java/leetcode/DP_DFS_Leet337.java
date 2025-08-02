@@ -10,6 +10,7 @@ public class DP_DFS_Leet337 {
 
     public int rob(TreeNode root) {
         if (root == null) return 0;
+        dfs(root);
         return Math.max(selected.getOrDefault(root, 0),
                 noselected.getOrDefault(root, 0));
 
@@ -29,8 +30,10 @@ public class DP_DFS_Leet337 {
         if (root == null) return;
         dfs(root.left);
         dfs(root.right);
+        //root.val + 不选左 + 不选右子树
         selected.put(root, root.val +
                 noselected.getOrDefault(root.left, 0) + noselected.getOrDefault(root.right, 0));
+        //不选根节点 Math.max(Math.max(选左，不选左) + Math.max(选右，不选右))
         noselected.put(root,
                 Math.max(selected.getOrDefault(root.left, 0), noselected.getOrDefault(root.left, 0))
                         + Math.max(selected.getOrDefault(root.right, 0),
