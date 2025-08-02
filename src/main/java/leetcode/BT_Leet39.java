@@ -22,7 +22,7 @@ public class BT_Leet39 {
         for (int i = pos; i < candidates.length; i++) {
             if (candidates[i] > target) break;
             path.add(candidates[i]);
-            backTrack(candidates, target - candidates[i], pos++, path, answer);
+            backTrack(candidates, target - candidates[i], i, path, answer);
             path.remove(path.size() - 1);
         }
 

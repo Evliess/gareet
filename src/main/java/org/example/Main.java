@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -48,10 +47,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        String[] aaa = new String[]{"a", "b"};
-        List<String> list = new LinkedList(Arrays.asList(aaa));
-        System.out.println(list.get(0));
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        System.out.println(list);
+        List<List<String>> l = new ArrayList<>();
+        l.add(new ArrayList<>(list));
+        System.out.println(l);
 
 
 
