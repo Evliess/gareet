@@ -10,10 +10,10 @@ public class TwoPointers_Leet15 {
         if (nums == null || nums.length < 3) return new ArrayList<>();
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
+        int right = nums.length - 1;
         for (int i = 0; i < nums.length - 2; i++) {
             if (i > 0 && nums[i - 1] == nums[i]) continue; //i-1的时候已经计算过了，所以跳过
             int left = i + 1;
-            int right = nums.length - 1;
             while (left < right) {
                 if (nums[i] > 0) break; //三个数中最小的大于0，三数之和肯定大于0
                 int sum = nums[i] + nums[left] + nums[right];
