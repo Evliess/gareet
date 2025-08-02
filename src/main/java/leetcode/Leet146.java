@@ -22,6 +22,8 @@ import java.util.Map;
 //    }
 //}
 
+
+//head -> 1 -> tail
 class CNode {
     CNode prev;
     CNode next;
