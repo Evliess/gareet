@@ -2,27 +2,19 @@ package leetcode;
 
 public class DP_Leet5 {
     public static String longestPalindrome(String s) {
-//        return dp_solution(s);
         int max = 1;
         int start = 0;
         for (int i = 0; i < s.length(); i++) {
             int[] even = expandAt(s, i, i);
             int[] odd = expandAt(s, i, i + 1);
-            int currLen;
-            if (even[1] > odd[1]) {
-                currLen = even[1];
-                if (currLen > max) {
-                    max = currLen;
-                    start = even[0];
-                }
-            } else {
-                currLen = odd[1];
-                if (currLen > max) {
-                    max = currLen;
-                    start = odd[0];
-                }
+            if (even[1] > max) {
+                max = even[1];
+                start = even[0];
             }
-
+            if (odd[1] > max) {
+                max = odd[1];
+                start = odd[0];
+            }
         }
         return s.substring(start, start + max);
     }
