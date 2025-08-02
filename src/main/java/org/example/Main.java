@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -36,9 +40,18 @@ public class Main {
 
     }
 
+    public static void swap(int[] nums, int i, int j) {
+        if (i == j) return;
+        nums[i] ^= nums[j];
+        nums[j] ^= nums[i];
+        nums[i] ^= nums[j];
+    }
+
     public static void main(String[] args) {
-        Integer a = 8;
-        System.out.println(Integer.bitCount(a));
+
+        String[] aaa = new String[]{"a", "b"};
+        List<String> list = new LinkedList(Arrays.asList(aaa));
+        System.out.println(list.get(0));
 
 
 
