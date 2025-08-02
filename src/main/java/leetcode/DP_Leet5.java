@@ -2,7 +2,38 @@ package leetcode;
 
 public class DP_Leet5 {
     public static String longestPalindrome(String s) {
-        return dp_solution(s);
+//        return dp_solution(s);
+        int max = 1;
+        int start = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int[] even = expandAt(s, i, i);
+            int[] odd = expandAt(s, i, i + 1);
+            int currLen;
+            if (even[1] > odd[1]) {
+                currLen = even[1];
+                if (currLen > max) {
+                    max = currLen;
+                    start = even[0];
+                }
+            } else {
+                currLen = odd[1];
+                if (currLen > max) {
+                    max = currLen;
+                    start = odd[0];
+                }
+            }
+
+        }
+        return s.substring(start, start + max);
+    }
+
+    public static int[] expandAt(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        int len = right - left - 1;
+        return new int[]{left + 1, len};
     }
 
     public static String dp_solution(String s) {
@@ -33,7 +64,6 @@ public class DP_Leet5 {
                         start = i;
                     }
                 }
-
             }
         }
         return s.substring(start, start + maxlen);
@@ -41,7 +71,8 @@ public class DP_Leet5 {
 
 
     public static void main(String[] args) {
-        System.out.println(dp_solution("babad")); //bab
-        System.out.println(dp_solution("cbbd")); //bb
+//        System.out.println(dp_solution("babad")); //bab
+//        System.out.println(dp_solution("cbbd")); //bb
+        System.out.println(longestPalindrome("aaaaaaabaaaaaaaa"));
     }
 }
