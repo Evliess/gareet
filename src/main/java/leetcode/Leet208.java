@@ -1,60 +1,56 @@
 package leetcode;
 
-class TrieNode {
-    TrieNode[] children;
+class TNode {
+    TNode[] children;
     boolean isEnd;
 
-    public TrieNode() {
-        children = new TrieNode[26];
+    public TNode() {
+        children = new TNode[26];
         isEnd = false;
     }
 }
 
-
 class Trie {
-
-
-    TrieNode root;
+    TNode root;
 
     public Trie() {
-        root = new TrieNode();
+        root = new TNode();
     }
 
     public void insert(String word) {
-        TrieNode node = root;
-        for (char w : word.toCharArray()) {
-            int index = w - 'a';
-            if (node.children[index] == null) {
-                node.children[index] = new TrieNode();
-            }
+        if (word == null || word.isEmpty())
+            return;
+        TNode node = root;
+        for (char ch : word.toCharArray()) {
+            int index = ch - 'a';
+            if (node.children[index] == null)
+                node.children[index] = new TNode();
+            node = node.children[index]; //记住修改node指向孩子节点
         }
         node.isEnd = true;
     }
 
-
     public boolean search(String word) {
-        TrieNode node = traverse(word);
-        return node != null && node.isEnd;
-    }
+        TNode tnode = traverse(word);
+        return tnode != null && tnode.isEnd;
 
-    public TrieNode traverse(String word) {
-        TrieNode node = root;
-        for (char w : word.toCharArray()) {
-            int index = w - 'a';
-            if (node.children[index] == null) {
-                return null;
-            }
-            node = node.children[index];
-        }
-        return node;
     }
 
     public boolean startsWith(String prefix) {
         return traverse(prefix) != null;
     }
-}
 
-public class Leet208 {
+    public TNode traverse(String prefix) {
+        if (prefix == null || prefix.isEmpty())
+            return null;
+        TNode node = root;
+        for (char ch : prefix.toCharArray()) {
+            int index = ch - 'a';
+            if (node.children[index] == null)
+                return null;
+            node = node.children[index]; //记住修改node指向孩子节点
+        }
+        return node;
 
-
+    }
 }

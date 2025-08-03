@@ -45,8 +45,8 @@ public class TSort_Leet207 {
     }
 
     public static void main(String[] args) {
-        int[][] p = {{1, 0}, {0, 1}};
-        System.out.println(canFinish(2, p));
+        int[][] p = {{1, 0}, {2, 1}, {3, 1}};
+        System.out.println(canFinish(4, p));
 
     }
 }
