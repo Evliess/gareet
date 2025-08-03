@@ -5,7 +5,51 @@ import java.util.PriorityQueue;
 // 148. 排序链表
 public class Leet148 {
 
-    public static ListNode sortList(ListNode head) {
+
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode mid = findMid(head);
+        ListNode head2 = mid.next;
+        mid.next = null; //断开链表是将mid.next设置为null
+        ListNode left = sortList(head);
+        ListNode right = sortList(head2);
+        return merge(left, right);
+    }
+
+    public ListNode merge(ListNode head1, ListNode head2) {
+        ListNode dummy = new ListNode();
+        ListNode curr = dummy;
+        while (head1 != null && head2 != null) {
+            if (head1.val < head2.val) {
+                curr.next = head1;
+                head1 = head1.next;
+            } else {
+                curr.next = head2;
+                head2 = head2.next;
+            }
+            curr = curr.next;
+        }
+        if (head1 != null) {
+            curr.next = head1;
+        }
+        if (head2 != null) {
+            curr.next = head2;
+        }
+        return dummy.next;
+    }
+
+    public ListNode findMid(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head.next; //为了保证二分的时候，左右节点数量均衡，这样slow就慢一步
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public static ListNode solution(ListNode head) {
         if (head == null) return null;
         PriorityQueue<ListNode> queue = new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
         while (head != null) {
@@ -39,7 +83,7 @@ public class Leet148 {
             curr = node;
         }
         System.out.println(head);
-        ListNode ans = sortList(head);
+        ListNode ans = solution(head);
 
     }
 }
