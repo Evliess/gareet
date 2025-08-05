@@ -3,6 +3,7 @@ package leetcode;
 import java.util.Arrays;
 
 public class DP_Leet416 {
+    //类似0-1背包问题
     //dp使用一维数组，反向填充
     public static boolean canPartition(int[] nums) {
         int sum = 0;
@@ -38,7 +39,7 @@ public class DP_Leet416 {
             dp[i][0] = true;
         }
         for (int i = 1; i <= len; i++) {
-            int num = nums[i];
+            int num = nums[i - 1];
             for (int j = 1; j <= target; j++) {
                 if (num > j) {
                     dp[i][j] = dp[i - 1][j];
@@ -98,7 +99,7 @@ public class DP_Leet416 {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 5, 11, 5}; //这是一个反例，贪心不行，需要DP 0/1背包问题
+        int[] nums = {1, 2, 3, 4}; //这是一个反例，贪心不行，需要DP 0/1背包问题
         System.out.println(solution(nums));
     }
 }
