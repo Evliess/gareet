@@ -9,7 +9,7 @@ public class DP_Leet139 {
         if (s == null || s.isEmpty()) return true;
         int len = s.length();
         boolean[] dp = new boolean[len + 1];
-        dp[0] = true; //代表空字符串可以被拆分 dp[1] 代表 s中第一个字符串可以被拆分
+        dp[0] = true; //代表空字符串可以被拆分 dp[1] 代表 s中第一个字符串可以被拆分,下标从0计算
         for (int i = 0; i < dp.length; i++) {
             if (!dp[i]) {
                 continue;
