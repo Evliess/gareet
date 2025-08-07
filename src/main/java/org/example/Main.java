@@ -46,15 +46,22 @@ public class Main {
         nums[i] ^= nums[j];
     }
 
+    public static void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-        list.add("a");
-        System.out.println(list);
-        List<List<String>> l = new ArrayList<>();
-        l.add(new ArrayList<>(list));
-        System.out.println(l);
-
-
-
+        list.add("p");
+        list.add("w");
+        list = list.subList(0, list.size());
+        System.out.println(list.size());
+        System.out.println("0".matches("[\\d]+"));
     }
 }
