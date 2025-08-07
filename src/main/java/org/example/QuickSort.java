@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class QuickSort {
 
     public static void sort(int[] nums, int start, int end) {
@@ -11,6 +14,8 @@ public class QuickSort {
     }
 
     public static int getPos(int[] nums, int start, int end) {
+        int rIndex = ThreadLocalRandom.current().nextInt(start, end + 1);
+        swap(nums, start, rIndex);
         int pivot = nums[start];
         int left = start;
         while (start < end) {
@@ -51,9 +56,9 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{5, 22, 22, 11, 4, 3, 2, 1, 1};
+        int[] a = new int[]{5, 22, 22, 11, 4, 3, 2, 1, 1, 100, 20};
         sort(a, 0, a.length - 1);
-        System.out.println(a);
+        System.out.println(Arrays.toString(a));
 //        insertSort(a);
 //        System.out.println(a);
 
