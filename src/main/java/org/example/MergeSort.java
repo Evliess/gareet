@@ -37,7 +37,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] c = new int[]{11, 2, 3, 4};
         sort(c);
-        System.out.println(c);
+        System.out.println(Arrays.toString(c));
 
 
     }

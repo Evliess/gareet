@@ -4,6 +4,23 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DP_Leet139 {
+    //这种解法比较好
+    //dp[i] 表示字符串 s 的前 i 个字符（即 s[0...i-1]）能否被字典中的单词拆分。
+    public static boolean solution(String s, List<String> wordDict) {
+        int len = s.length();
+        boolean[] dp = new boolean[len + 1];
+        dp[0] = true;
+        for (int i = 1; i <= len; i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                }
+            }
+        }
+        return dp[len];
+    }
+
+
     //dp[i] 表示字符串 s 的前 i 个字符（即 s[0...i-1]）能否被字典中的单词拆分。
     public static boolean wordBreak(String s, List<String> wordDict) {
         if (s == null || s.isEmpty()) return true;
