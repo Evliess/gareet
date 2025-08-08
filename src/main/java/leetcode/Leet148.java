@@ -41,7 +41,8 @@ public class Leet148 {
 
     public ListNode findMid(ListNode head) {
         ListNode slow = head;
-        ListNode fast = head.next; //为了保证二分的时候，左右节点数量均衡，这样slow就慢一步
+        ListNode fast = head;
+        if (fast.next != null) fast = fast.next; //为了保证二分的时候，左右节点数量均衡，这样slow就慢一步
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -76,14 +77,7 @@ public class Leet148 {
     public static void main(String[] args) {
         int[] a = new int[]{1, 4, 3};
         ListNode head = new ListNode(a[0]);
-        ListNode curr = head;
-        for (int i = 1; i < a.length; i++) {
-            ListNode node = new ListNode(a[i]);
-            curr.next = node;
-            curr = node;
-        }
-        System.out.println(head);
-        ListNode ans = solution(head);
+
 
     }
 }
