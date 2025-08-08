@@ -7,6 +7,7 @@ public class Leet148 {
 
 
     public ListNode sortList(ListNode head) {
+        //这个判断是递归退出的条件，很重要
         if (head == null || head.next == null)
             return head;
         ListNode mid = findMid(head);
