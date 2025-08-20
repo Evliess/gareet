@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class QuickSort {
 
     public static void sort(int[] nums, int start, int end) {
-        if (start >= end || nums.length < 2) return;
+        if (start >= end || nums == null) return;
         int pos = getPos(nums, start, end);
         sort(nums, start, pos - 1);
         sort(nums, pos + 1, end);
