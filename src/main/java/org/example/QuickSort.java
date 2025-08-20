@@ -8,7 +8,6 @@ public class QuickSort {
     public static void sort(int[] nums, int start, int end) {
         if (start >= end || nums.length < 2) return;
         int pos = getPos(nums, start, end);
-        System.out.println("pos:" + pos);
         sort(nums, start, pos - 1);
         sort(nums, pos + 1, end);
     }
