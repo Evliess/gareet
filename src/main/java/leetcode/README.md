@@ -1,5 +1,4 @@
-https://leetcode.cn/problem-list/t79LTxQN/
-https://leetcode.cn/problem-list/2cktkvj/
+https://leetcode.cn/problem-list/HOLb8WEG/
 
 retrospective
 TODO: [399,990(并差集)], 72
