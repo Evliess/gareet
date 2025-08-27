@@ -1,9 +1,47 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Test {
+
+
+    public static void insertsort(int[] nums) {
+        if (nums == null || nums.length == 0) return;
+        int len = nums.length;
+        for (int i = 1; i < len; i++) {
+            int curr = nums[i];
+            int sorted = i - 1;
+            while (sorted >= 0 && nums[sorted] > curr) {
+                nums[sorted + 1] = nums[sorted];
+                sorted--;
+            }
+            nums[sorted + 1] = curr;
+        }
+    }
+
+    public static void mergesort(int[] nums) {
+        if (nums == null || nums.length < 2) return;
+        int start = 0;
+        int end = nums.length;
+        int mid = start + (end - start) / 2;
+        int[] left = Arrays.copyOfRange(nums, 0, mid);
+        int[] right = Arrays.copyOfRange(nums, mid, end);
+        mergesort(left);
+        mergesort(right);
+        merge(nums, left, right);
+    }
+
+    public static void merge(int[] target, int[] a, int[] b) {
+        int pt = 0;
+        int pa = 0;
+        int pb = 0;
+        while (pa < a.length && pb < b.length) {
+            if (a[pa] < b[pb]) target[pt++] = a[pa++];
+            else target[pt++] = b[pb++];
+        }
+        while (pa < a.length) target[pt++] = a[pa++];
+        while (pb < b.length) target[pt++] = b[pb++];
+    }
 
     public static void quicksort(int[] nums, int start, int end) {
         if (nums == null || start >= end) return;
@@ -13,16 +51,12 @@ public class Test {
     }
 
     public static int getPos(int[] nums, int start, int end) {
-        int random = ThreadLocalRandom.current().nextInt(start, end + 1);
-        swap(nums, start, random);
         int pivot = nums[start];
         int left = start;
         while (start < end) {
-            while (start < end && nums[end] >= pivot) end--;
-            while (start < end && nums[start] <= pivot) start++;
-            if (start < end) {
-                swap(nums, start, end);
-            }
+            while (nums[end] >= pivot) end--;
+            while (nums[start] <= pivot) start++;
+            if (start < end) swap(nums, start, end);
         }
         swap(nums, left, end);
         return end;
@@ -34,24 +68,12 @@ public class Test {
         nums[j] = temp;
     }
 
-    //2, 5, 4, 2, 1
-    public static void insertsort(int[] nums) {
-        if (nums == null || nums.length == 0) return;
-        for (int i = 1; i < nums.length; i++) {
-            int sortedPos = i - 1;
-            int curr = nums[i];
-            while (sortedPos >= 0 && nums[sortedPos] > curr) {
-                nums[sortedPos + 1] = nums[sortedPos];
-                sortedPos--;
-            }
-            nums[sortedPos + 1] = curr;
-        }
-    }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 5, 4, 2, 1};
+        int[] nums = new int[]{2, 1, 1, 4, 5};
+//        insertsort(nums);
 //        quicksort(nums, 0, nums.length - 1);
-        insertsort(nums);
+        mergesort(nums);
         System.out.println(Arrays.toString(nums));
     }
 
