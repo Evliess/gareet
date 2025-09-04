@@ -18,19 +18,11 @@ public class XPowY {
         return results.size();
     }
 
-
-    //这种解法需要优化，答案不正确
-    public static Integer solution(Integer x, Integer y) {
+    public static Integer solution2(Integer x, Integer y) {
         Set<BigInteger> set = new HashSet<>();
-        //处理所有X^1的情况
-        for (int i = 1; i <= x; i++) {
-            set.add(BigInteger.valueOf(i));
-        }
-        //处理所有X^y的情况，其中y>=2
-        for (int a = 2; a <= x; a++) {
-            if (isCalculated(a)) continue;
+        for (int a = 1; a <= x; a++) {
             BigInteger base = BigInteger.valueOf(a);
-            for (int p = 2; p <= y; p++) {
+            for (int p = 1; p <= y; p++) {
                 set.add(base.pow(p));
             }
         }
@@ -38,21 +30,49 @@ public class XPowY {
     }
 
 
-    public static boolean isCalculated(int n) {
-        if (n == 1) return false;
-        // 检查所有可能的指数
-        for (int exponent = 2; exponent <= (int) (Math.log(n) / Math.log(2)) + 1; exponent++) {
-            int root = (int) Math.round(Math.pow(n, 1.0 / exponent));
-            if (Math.pow(root, exponent) == n) {
-                return true;
+    //这种解法需要优化，答案不正确
+    public static void solution() {
+        final int MAX = 1000;
+        Set<BigInteger> distinctResults = new HashSet<>();
+        boolean[] isProcessed = new boolean[MAX + 1];
+
+        for (int x = 2; x <= MAX; x++) {
+            // 如果 x 已经被处理过（因为它是一个更小的数的幂），则跳过
+            if (isProcessed[x]) {
+                continue;
+            }
+
+            // x 是一个“根基数”，计算它所有的幂
+            BigInteger baseX = BigInteger.valueOf(x);
+            for (int y = 2; y <= MAX; y++) {
+                distinctResults.add(baseX.pow(y));
+            }
+
+            // 标记 x 的更高次幂，以便后续跳过它们
+            // 使用 long 防止 p 溢出
+            long p = (long) x * x;
+            while (p <= MAX) {
+                isProcessed[(int) p] = true;
+                p *= x;
             }
         }
-        return false;
+
+        System.out.println("优化后的不重复数总数是: " + distinctResults.size());
+    }
+
+
+    public static void isCalculated(int x, int y, boolean[] isProcessed) {
+        long p = (long) x * x;
+        while (p <= y) {
+            isProcessed[(int) p] = true;
+            p *= x;
+        }
     }
 
 
     public static void main(String[] args) {
-        System.out.println(distinct(20, 30)); //1,2,4,8
-        System.out.println(solution(20, 30));
+        System.out.println(distinct(1000, 1000)); //1,2,4,8
+        System.out.println(solution2(1000, 1000)); //1,2,4,8
+        solution();
     }
 }

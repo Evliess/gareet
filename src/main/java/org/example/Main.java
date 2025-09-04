@@ -1,7 +1,10 @@
 package org.example;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -56,12 +59,25 @@ public class Main {
         }
     }
 
+
+    public static Integer xPowY(int x, int y) {
+        Set<BigInteger> set = new HashSet<>();
+        for (int i = 1; i <= x; i++) {
+            BigInteger base = BigInteger.valueOf(i);
+            for (int p = 1; p <= y; p++) {
+                set.add(base.pow(p));
+            }
+        }
+        return set.size();
+    }
+
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         list.add("p");
         list.add("w");
-        list = list.subList(0, list.size());
-        System.out.println(list.size());
-        System.out.println("0".matches("[\\d]+"));
+        list.add("e");
+        System.out.println(list);
+
+        System.out.println(Math.max(1, 0));
     }
 }

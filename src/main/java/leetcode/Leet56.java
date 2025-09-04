@@ -1,33 +1,39 @@
 package leetcode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Stack;
 
 public class Leet56 {
 
 
     public static int[][] merge(int[][] intervals) {
-        if (intervals == null || intervals.length == 0 || intervals[0].length == 0) return null;
-        Arrays.sort(intervals, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
-        List<int[]> ans = new ArrayList<>();
-        ans.add(intervals[0]);
+        Stack<int[]> stack = new Stack<>();
+        Arrays.sort(intervals, (i1, i2) -> i1[0] - i2[0]);
+        stack.push(intervals[0]);
         for (int i = 1; i < intervals.length; i++) {
-            int l = intervals[i][0];
-            int r = intervals[i][1];
-            if (ans.get(ans.size() - 1)[1] < l) {
-                ans.add(intervals[i]);
+            int[] top = stack.peek();
+            int[] curr = intervals[i];
+            if (top[1] >= curr[0]) {
+                stack.pop();
+                stack.push(new int[]{top[0], curr[1]});
             } else {
-                ans.get(ans.size() - 1)[1] = Math.max(ans.get(ans.size() - 1)[1], r);
+                stack.push(curr);
             }
         }
-        return ans.toArray(new int[0][]);
+        int size = stack.size();
+        int[][] ans = new int[size][2];
+        while (size > 0) {
+            ans[--size] = stack.pop();
+        }
+        return ans;
     }
 
 
     public static void main(String[] args) {
         int[][] arr = new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}};
         int[][] ans = merge(arr);
-        System.out.println(ans[0]);
+        System.out.println(Arrays.toString(ans[0]));
+        System.out.println(Arrays.toString(ans[1]));
+        System.out.println(Arrays.toString(ans[2]));
     }
 }
