@@ -44,8 +44,8 @@ public class Window_Leet438 {
     }
 
     public static void main(String[] args) {
-        String s = "addabc";
-        String p = "abc";
+        String s = "abab";
+        String p = "ab";
         List<Integer> ans = solution(s, p);
         System.out.println(ans);
     }
