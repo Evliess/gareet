@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Jupyter
-        run: pip install jupyter
+        run: |
+          apt update && apt upgrade -y && apt dist-upgrade
+          pip install jupyter
 
       - name: Download cloudflared
         run: |
@@ -24,4 +26,5 @@ jobs:
           sleep 3
 
           # 使用 cloudflared 创建临时隧道（无需登录）
+          ./cloudflared --version
           ./cloudflared tunnel --url http://localhost:8888 --no-autoupdate
