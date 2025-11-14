@@ -16,7 +16,7 @@ jobs:
 
       - name: Download cloudflared
         run: |
-          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
+          wget https://github.com/cloudflare/cloudflared/releases/download/2023.12.0/cloudflared-linux-amd64 -O cloudflared
           chmod +x cloudflared
 
       - name: Start Jupyter and expose via tunnel
@@ -27,4 +27,4 @@ jobs:
 
           # 使用 cloudflared 创建临时隧道（无需登录）
           ./cloudflared --version
-          ./cloudflared tunnel --url http://localhost:8888 --no-autoupdate
+          ./cloudflared tunnel --url http://localhost:8888 --no-autoupdateupdate
