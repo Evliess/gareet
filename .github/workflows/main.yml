@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch: # 允许手动触发
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  jupyter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Jupyter
+        run: pip install jupyter
+
+      - name: Download cloudflared
+        run: |
+          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
+          chmod +x cloudflared
+
+      - name: Start Jupyter and expose via tunnel
+        run: |
+          # 启动 Jupyter
+          jupyter notebook --no-browser --port=8888 --ip=127.0.0.1 --NotebookApp.token='' --NotebookApp.password='' &
+          sleep 3
+
+          # 使用 cloudflared 创建临时隧道（无需登录）
+          ./cloudflared tunnel --url http://localhost:8888 --no-autoupdate
